@@ -2,30 +2,37 @@ import Chartjs from "chart.js";
 import { useRef, useEffect } from "react";
 
 const chartData = {
-  type: "bar",
+  type: "scatter",
   data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
     datasets: [
       {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
+        label: "3500RPM",
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        borderColor: "rgba(255, 99, 132, 1)",
         borderWidth: 1,
+        data: [
+          { x: 12, y: 12 },
+          { x: 19, y: 19 },
+          { x: 3, y: 3 },
+          { x: 5, y: 5 },
+          { x: 2, y: 2 },
+          { x: 3, y: 3 },
+        ],
+      },
+
+      {
+        label: "5000RPM",
+        backgroundColor: "rgba(0, 99, 132, 0.2)",
+        borderColor: "rgba(0, 99, 132, 1)",
+        borderWidth: 1,
+        data: [
+          { x: 2, y: 12 },
+          { x: 1, y: 19 },
+          { x: 13, y: 3 },
+          { x: 5, y: 15 },
+          { x: 2, y: 12 },
+          { x: 3, y: 13 },
+        ],
       },
     ],
   },
