@@ -1,11 +1,14 @@
 import { post } from "axios";
 import { useState } from "react";
 
+import { Loader } from "./Loader";
+
 const URL = "/api/upload-csv";
 
 const PROCESS = {
   INITIAL: "INITIAL",
   SUCCESS: "SUCCESS",
+  LOADING: "LOADING",
   ERROR: "ERROR",
 };
 
@@ -30,6 +33,8 @@ export const SimpleReactFileUpload = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+
+    setProcess(PROCESS.LOADING);
 
     fileUpload()
       .then((response) => {
@@ -71,6 +76,14 @@ export const SimpleReactFileUpload = () => {
         <h1>Success</h1>
         <p>File was uploaded successfully.</p>
         <button>Upload another?</button>
+      </form>
+    );
+  }
+
+  if (process === PROCESS.LOADING) {
+    return (
+      <form>
+        <Loader />
       </form>
     );
   }

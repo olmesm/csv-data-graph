@@ -22,7 +22,9 @@ const processCsv = ({ fileName, filePath }) => {
       .pipe(csv.parse({ delimiter: ";", headers: true }))
       .transform(dataTransformers[xformerName].insert)
       .on("error", reject)
-      .on("data", (row) => {})
+      .on("data", (row) => {
+        // dont do anything with the returned data for now
+      })
       .on("end", resolve);
   });
 };
