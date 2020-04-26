@@ -1,42 +1,45 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('DataRows', {
+    return queryInterface.createTable("DataRows", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       time: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE,
+      },
+      bikeName: {
+        type: Sequelize.STRING,
       },
       mileage: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE,
       },
       rpm: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE,
       },
       pm1m: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE,
       },
       oscav: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE,
       },
       svhal: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('DataRows');
-  }
+    return queryInterface.dropTable("DataRows");
+  },
 };

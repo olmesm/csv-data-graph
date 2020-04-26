@@ -1,0 +1,14 @@
+20191218_PDE082_17083kmF.mf4
+([0-9]{8})_(PD[A|E][0-9]*)
+
+
+oscav-output-20191218.csv
+
+oscav-output-
+  'Time[s]; Mileage [km]; RPM [rpm]; PM1M [kpa]; OSCAVE; SVHALF; Filename;'
+
+ranges selector
+
+fixed ranges
+  rpm (+-500) [3500, 4500, 5500, all, custom]
+  pm1m (+-5) [50, 55, all, custom]

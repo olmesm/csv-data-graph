@@ -77,7 +77,7 @@ export const SimpleReactFileUpload = () => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      <input type="file" onChange={onChange} />
+      <input type="file" name="file" onChange={onChange} />
       <button type="submit">Upload</button>
     </form>
   );

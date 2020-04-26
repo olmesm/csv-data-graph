@@ -1,7 +1,9 @@
+import * as csv from "fast-csv";
+import path from "path";
+import fs from "fs";
 import formidable from "formidable";
-import { parse as csvParse } from "fast-csv";
 
-const form = formidable();
+import * as dataTransformers from "../../utils/dataTransformers";
 
 export const config = {
   api: {
@@ -9,27 +11,42 @@ export const config = {
   },
 };
 
+const processCsv = ({ fileName, filePath }) => {
+  const xformers = Object.keys(dataTransformers);
+  const xformerName = xformers.find((x) =>
+    fileName.startsWith(dataTransformers[x].matcher)
+  );
+
+  return new Promise((resolve, reject) => {
+    fs.createReadStream(path.resolve(filePath))
+      .pipe(csv.parse({ delimiter: ";", headers: true }))
+      .transform(dataTransformers[xformerName].insert)
+      .on("error", reject)
+      .on("data", (row) => {})
+      .on("end", resolve);
+  });
+};
+
 export default async (req, res) => {
-  form.parse(req, (err, fields, files) => {
-    // res.send("ok");
+  const { files } = await new Promise((resolve, reject) => {
+    const form = new formidable.IncomingForm();
+
+    form.parse(req, (err, fields, files) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve({ fields, files });
+    });
   });
 
-  form.onPart = (part) => {
-    part
-      .pipe(csvParse())
-      .on("error", (error) => {
-        console.error(error);
-      })
-      .on("data", (row) => {
-        console.log(row);
-      });
-    // .on("end", (rowCount) => {
-    //   console.log(`Parsed ${rowCount} rows`);
-    //   res.write("Parsed");
-    // });
-  };
+  if (!files) {
+    throw new Error("Error processing file upload");
+  }
 
-  form.on("end", () => {
-    res.send("OK 1");
-  });
+  const fileName = files.file.name;
+  const filePath = files.file.path;
+
+  const result = await processCsv({ fileName, filePath });
+
+  res.send(result);
 };

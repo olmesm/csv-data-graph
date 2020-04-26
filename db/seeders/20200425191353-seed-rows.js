@@ -15,6 +15,7 @@ module.exports = {
           pm1m: 53.3,
           oscav: 1015.0,
           svhal: 880.0,
+          bikeName: "PD081__test",
           createdAt,
           updatedAt,
         },
@@ -26,6 +27,7 @@ module.exports = {
           oscav: 967.0,
           svhal: 570.0,
           createdAt,
+          bikeName: "PD081__test",
           updatedAt,
         },
         {
@@ -36,6 +38,7 @@ module.exports = {
           oscav: 968.0,
           svhal: 530.0,
           createdAt,
+          bikeName: "PD081__test",
           updatedAt,
         },
         {
@@ -46,6 +49,7 @@ module.exports = {
           oscav: 796.0,
           svhal: 460.0,
           createdAt,
+          bikeName: "PD081__test",
           updatedAt,
         },
         {
@@ -56,6 +60,7 @@ module.exports = {
           oscav: 1223.0,
           svhal: 580.0,
           createdAt,
+          bikeName: "PD081__test",
           updatedAt,
         },
         {
@@ -66,6 +71,7 @@ module.exports = {
           oscav: 676.0,
           svhal: 410.0,
           createdAt,
+          bikeName: "PD081__test",
           updatedAt,
         },
         {
@@ -76,6 +82,7 @@ module.exports = {
           oscav: 1226.0,
           svhal: 480.0,
           createdAt,
+          bikeName: "PD081__test",
           updatedAt,
         },
         {
@@ -86,6 +93,7 @@ module.exports = {
           oscav: 1051.0,
           svhal: 450.0,
           createdAt,
+          bikeName: "PD081__test",
           updatedAt,
         },
         {
@@ -96,6 +104,7 @@ module.exports = {
           oscav: 1027.0,
           svhal: 480.0,
           createdAt,
+          bikeName: "PD081__test",
           updatedAt,
         },
         {
@@ -106,6 +115,7 @@ module.exports = {
           oscav: 1067.0,
           svhal: 950.0,
           createdAt,
+          bikeName: "PD081__test",
           updatedAt,
         },
       ],
