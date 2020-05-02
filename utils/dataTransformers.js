@@ -3,7 +3,7 @@ import db from "../db/models";
 export const oscaveType = {
   matcher: "oscav-output-",
   insert: (row, next) => {
-    db.DataRow.create({
+    return db.DataRow.create({
       time: row["Time[s]"].replace(/^ /, ""),
       mileage: row[" Mileage [km]"].replace(/^ /, ""),
       rpm: row[" RPM [rpm]"].replace(/^ /, ""),
