@@ -10,61 +10,12 @@ const colours = [
   "#b62d42",
 ];
 
-const rpmList = ["3500RPM", "4500RPM", "5500RPM"];
-
-// const chartData = {
-//   type: "scatter",
-//   data: {
-//     datasets: [
-//       {
-//         label: "3500RPM",
-//         backgroundColor: "rgba(255, 99, 132, 0.2)",
-//         borderColor: "rgba(255, 99, 132, 1)",
-//         borderWidth: 1,
-//         data: [
-//           { x: 12, y: 12 },
-//           { x: 19, y: 19 },
-//           { x: 3, y: 3 },
-//           { x: 5, y: 5 },
-//           { x: 2, y: 2 },
-//           { x: 3, y: 3 },
-//         ],
-//       },
-
-//       {
-//         label: "5000RPM",
-//         backgroundColor: "rgba(0, 99, 132, 0.2)",
-//         borderColor: "rgba(0, 99, 132, 1)",
-//         borderWidth: 1,
-//         data: [
-//           { x: 2, y: 12 },
-//           { x: 1, y: 19 },
-//           { x: 13, y: 3 },
-//           { x: 5, y: 15 },
-//           { x: 2, y: 12 },
-//           { x: 3, y: 13 },
-//         ],
-//       },
-//     ],
-//   },
-//   options: {
-//     scales: {
-//       yAxes: [
-//         {
-//           ticks: {
-//             beginAtZero: true,
-//           },
-//         },
-//       ],
-//     },
-//   },
-// };
-
-const formatOscav = (label, hexColour, _data) => {
+const formatOscav = (_data) => {
   const data = _data.map(({ mileage, oscav }) => ({ x: mileage, y: oscav }));
+  const hexColour = colours[1];
 
   return {
-    label,
+    label: "label",
     backgroundColor: `${hexColour}30`,
     borderColor: hexColour,
     borderWidth: 1,
@@ -74,16 +25,12 @@ const formatOscav = (label, hexColour, _data) => {
 
 export const Chart = ({ graphData }) => {
   const elCharto = useRef(null);
-  const _graphData = JSON.parse(graphData);
-
-  console.log(_graphData.map((d, i) => formatOscav(rpmList[i], colours[i], d)));
+  const ds = graphData.map((data, i) => formatOscav(data));
 
   const x = {
     type: "scatter",
     data: {
-      datasets: _graphData.map((d, i) =>
-        formatOscav(rpmList[i], colours[i], d)
-      ),
+      datasets: ds,
     },
     options: {
       scales: {
@@ -104,7 +51,11 @@ export const Chart = ({ graphData }) => {
     }
 
     new Chartjs(elCharto.current, x);
-  }, []);
+  }, [graphData]);
 
-  return <canvas ref={elCharto} width="400" height="400"></canvas>;
+  return (
+    <div style={{ position: "relative", height: "40vh", width: "80vw" }}>
+      <canvas ref={elCharto}></canvas>
+    </div>
+  );
 };

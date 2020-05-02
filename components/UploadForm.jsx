@@ -37,8 +37,7 @@ export const SimpleReactFileUpload = () => {
     setProcess(PROCESS.LOADING);
 
     fileUpload()
-      .then((response) => {
-        console.log(response);
+      .then((_) => {
         setProcess(PROCESS.SUCCESS);
       })
       .catch((e) => {

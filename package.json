@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf .next",
-    "dev": "next dev",
+    "dev": "sequelize db:migrate && next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "sequelize db:migrate && next start"
   },
   "dependencies": {
     "axios": "^0.19.2",

@@ -24,8 +24,7 @@ const processCsv = ({ fileName, filePath }) => {
       .on("error", reject)
       .on("data", (row) => {
         // dont do anything with the returned data for now
-        // however this is needed to keep track of the process
-        console.log({ processCsvRow: row });
+        // however this func is needed for node to keep track of the process
       })
       .on("end", resolve);
   });
