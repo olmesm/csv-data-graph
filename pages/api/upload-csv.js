@@ -13,8 +13,8 @@ export const config = {
 
 const processCsv = ({ fileName, filePath }) => {
   const xformers = Object.keys(dataTransformers);
-  const xformerName = xformers.find((x) =>
-    fileName.startsWith(dataTransformers[x].matcher)
+  const xformerName = xformers.find((xformer) =>
+    fileName.startsWith(dataTransformers[xformer].matcher)
   );
 
   return new Promise((resolve, reject) => {
@@ -24,6 +24,8 @@ const processCsv = ({ fileName, filePath }) => {
       .on("error", reject)
       .on("data", (row) => {
         // dont do anything with the returned data for now
+        // however this is needed to keep track of the process
+        console.log({ processCsvRow: row });
       })
       .on("end", resolve);
   });
