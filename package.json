@@ -9,7 +9,7 @@
     "start": "sequelize db:migrate && next start"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chart.js": "^2.9.3",
     "fast-csv": "^4.1.3",
     "formidable": "^1.2.2",
